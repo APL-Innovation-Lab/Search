@@ -17,10 +17,22 @@ The `/locations` page of the Austin Public Library website can use JSON-LD to pr
      "@context": "https://schema.org",
      "@type": "Library",
      "name": "Central Library",
-     ...
+     "telephone": "+1-512-974-7400",
+     "address": {
+       "@type": "PostalAddress",
+       "streetAddress": "710 W. César Chávez St.",
+       "addressLocality": "Austin",
+       "addressRegion": "TX",
+       "postalCode": "78701"
+     },
      "openingHoursSpecification": [
        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "17:00"},
-       ...
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "09:00", "closes": "20:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "09:00", "closes": "20:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "09:00", "closes": "20:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "09:00", "closes": "20:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "09:00", "closes": "17:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "17:00"}
      ],
      "url": "https://library.austintexas.gov/central-library"
    }
@@ -32,10 +44,22 @@ The `/locations` page of the Austin Public Library website can use JSON-LD to pr
      "@context": "https://schema.org",
      "@type": "Store",
      "name": "APL Shop",
-     ...
+     "telephone": "+1-512-974-9676",
+     "address": {
+       "@type": "PostalAddress",
+       "streetAddress": "710 W. César Chávez St., 2nd Floor",
+       "addressLocality": "Austin",
+       "addressRegion": "TX",
+       "postalCode": "78701"
+     },
      "openingHoursSpecification": [
        {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "17:00"},
-       ...
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Monday", "opens": "10:00", "closes": "18:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "10:00", "closes": "18:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "opens": "10:00", "closes": "18:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Thursday", "opens": "10:00", "closes": "18:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Friday", "opens": "10:00", "closes": "17:00"},
+       {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "10:00", "closes": "17:00"}
      ],
      "url": "https://library.austintexas.gov/apl-shop"
    }
