@@ -6,16 +6,6 @@
 ## Overview
 This document provides a detailed overview of the Drupal Search API configuration for the library.austintexas.gov website.
 
-## Drupal Index View Configuration Summary
-
-- **Index Status**: Fully indexed with a total count of items mentioned.
-- **Status**: The index is currently enabled.
-- **Datasources**: Both "Content" and "Taxonomy term" datasources are fully indexed.
-- **Tracker**: Set to the default tracking method.
-- **Server**: Utilizing the Drupal server for indexing.
-- **Server Index Status**: A specific number of items are indexed on the server for this index.
-- **Cron Batch Size**: Configured to index 50 items per cron run.
-
 
 ### Content Types Indexed
 - AHC Page
@@ -35,55 +25,57 @@ This document provides a detailed overview of the Drupal Search API configuratio
 
 
 ### Fields Indexed
+| Label                | Machine Name       | Type     | Boost |
+|----------------------|--------------------|----------|-------|
+| Aggregated field     | aggregated_field   | Fulltext | 21.00 |
+| Rendered HTML output | rendered_item      | Fulltext | 21.00 |
+| Audience             | field_sd_audience  | String   |       |
+| Body                 | body               | Fulltext | 1.00  |
+| Body (Top)           | field_body_top     | Fulltext | 1.00  |
+| Content type         | type               | String   |       |
+| Do not index         | field_do_not_index | Boolean  |       |
+| Language             | langcode           | String   |       |
+| Product Names        | field_product_names| String   |       |
+| Published            | status             | Boolean  |       |
+| Recommend Tags       | field_recommend_tags| String  |       |
+| Searchable           | field_searchable   | Fulltext | 21.00 |
+| Search Terms         | field_search_terms | String   |       |
+| Time Start           | field_sr_time_start| Date     |       |
+| Title                | title              | Fulltext | 21.00 |
+| URL for Match        | field_url_for_match| Fulltext | 21.00 |
+| Description          | description        | Fulltext | 0.10  |
+| Do not index         | field_do_not_index | Boolean  |       |
+| Language             | langcode           | String   |       |
+| Name                 | name               | Fulltext | 21.00 |
+| Vocabulary           | vid                | String   |       |
 
-| Label                | Machine Name       | Property Path       | Type     | Boost |
-|----------------------|--------------------|---------------------|----------|-------|
-| Aggregated field     | aggregated_field   | aggregated_field    | Fulltext | 21.00 |
-| Rendered HTML output | rendered_item      | rendered_item       | Fulltext | 21.00 |
-| Audience             | field_sd_audience  | field_sd_audience   | String   |       |
-| Body                 | body               | body                | Fulltext | 1.00  |
-| Body (Top)           | field_body_top     | field_body_top      | Fulltext | 1.00  |
-| Content type         | type               | type                | String   |       |
-| Do not index         | field_do_not_index | field_do_not_index  | Boolean  |       |
-| Language             | langcode           | langcode            | String   |       |
-| Product Names        | field_product_names| field_product_names | String   |       |
-| Published            | status             | status              | Boolean  |       |
-| Recommend Tags       | field_recommend_tags| field_recommend_tags| String   |       |
-| Searchable           | field_searchable   | field_searchable    | Fulltext | 21.00 |
-| Search Terms         | field_search_terms | field_search_terms  | String   |       |
-| Time Start           | field_sr_time_start| field_sr_time_start | Date     |       |
-| Title                | title              | title               | Fulltext | 21.00 |
-| URL for Match        | field_url_for_match| field_url_for_match | Fulltext | 21.00 |
-| Description          | description        | description         | Fulltext | 0.10  |
-| Do not index         | field_do_not_index | field_do_not_index  | Boolean  |       |
-| Language             | langcode           | langcode            | String   |       |
-| Name                 | name               | name                | Fulltext | 21.00 |
-| Vocabulary           | vid                | vid                 | String   |       |
 
 
 ### Processor Configurations
 The following processor settings are enabled in the Drupal Search API:
 
-- **Content access**: (not checked).
-- **Entity status**: Checked.
-- **Highlight**: (not checked).
-- **HTML filter**: (not checked).
-- **Ignore case**: Checked.
-- **Ignore characters**: Checked.
-- **Index hierarchy**: (not checked).
-- **Number field-based boosting**: (not checked).
-- **Reverse entity references**: Checked.
-- **Role-based access**: (not checked).
-- **Stemmer**: (not checked).
-- **Stopwords**: (not checked).
-- **Tokenizer**: Checked.
-- **Transliteration**: Checked.
-- **Type-specific Boosting**: Checked.
+| Processor                    | Status      |
+|------------------------------|-------------|
+| Content Access               | Not Checked |
+| Entity Status                | Checked     |
+| Highlight                    | Not Checked |
+| HTML Filter                  | Not Checked |
+| Ignore Case                  | Checked     |
+| Ignore Characters            | Checked     |
+| Index Hierarchy              | Not Checked |
+| Number Field-Based Boosting  | Not Checked |
+| Reverse Entity References    | Checked     |
+| Role-Based Access            | Not Checked |
+| Stemmer                      | Not Checked |
+| Stopwords                    | Not Checked |
+| Tokenizer                    | Checked     |
+| Transliteration              | Checked     |
+| Type-Specific Boosting       | Checked     |
+
 
 ### Processor Order
 - **Preprocess Index**: Ignore case, Transliteration, Ignore characters, Tokenizer, Type-specific boosting.
 - **Preprocess Query**: Ignore case, Transliteration, Ignore characters, Tokenizer.
-- **Postprocess Query**: (Not shown in the screenshot).
 
 ### Processor Settings
 - **Ignore Case**: Enabled on all supported fields.
@@ -123,7 +115,6 @@ The character properties not currently selected but available for consideration 
 - Other, Format Characters
 - Other, Private Use Characters
 - Other, Surrogate Characters
-- Other, Not Assigned (no characters in the file have this property)
 
 ## Tokenizer Processor Configuration
 
@@ -171,11 +162,6 @@ These settings determine how text is tokenized and indexed, affecting the granul
 
 ### Upcoming Faceted Navigation
 Plans are in place to introduce faceted navigation to enhance search capabilities. This will involve adding specific facets based on the content types and taxonomies indexed.
-
-### Notes
-- The detailed configuration information is based on the analysis of the provided HTML files.
-- Manual review of the full content of these files is recommended for complete understanding.
-
 
 
 # Drupal Search Facets Setup Guide
