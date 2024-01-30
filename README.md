@@ -141,24 +141,31 @@ These settings determine how text is tokenized and indexed, affecting the granul
 
 ## Type-specific boosting
 
-### Boost Settings for Content
-- **Default boost for items from this datasource**: 1.00.
-- **AHC Page Bundle**: Using datasource default.
-- **Article Bundle**: Using datasource default.
-- **Digital Resource Bundle**: Boosted with a value of 13.00.
-- **Event Bundle**: Boosted with a value of 21.00.
-- **Exhibit Bundle**: Using datasource default.
-- **Keyword Match Bundle**: Boosted with a value of 21.00.
-- **Basic Page Bundle**: Using datasource default.
-- **Page Bundle**: Using datasource default.
-- **Staff Recommend Bundle**: Using datasource default.
+## Boost Settings for Content
 
-### Boost Settings for Taxonomy Term
-- **Default boost for items from this datasource**: 1.00.
-- **Recommend Tags Bundle**: Using datasource default.
-- **Digital Resource Subjects Bundle**: Boosted with a value of 13.00.
-- **Event Categories Bundle**: Boosted with a value of 21.00.
-- **Library Location Bundle**: Boosted with a value of 13.00.
+| Bundle                  | Boost Value |
+|-------------------------|-------------|
+| Default (all items)     | 1.00        |
+| AHC Page Bundle         | Default     |
+| Article Bundle          | Default     |
+| Digital Resource Bundle | 13.00       |
+| Event Bundle            | 21.00       |
+| Exhibit Bundle          | Default     |
+| Keyword Match Bundle    | 21.00       |
+| Basic Page Bundle       | Default     |
+| Page Bundle             | Default     |
+| Staff Recommend Bundle  | Default     |
+
+## Boost Settings for Taxonomy Term
+
+| Bundle                         | Boost Value |
+|--------------------------------|-------------|
+| Default (all items)            | 1.00        |
+| Recommend Tags Bundle          | Default     |
+| Digital Resource Subjects Bundle | 13.00     |
+| Event Categories Bundle        | 21.00       |
+| Library Location Bundle        | 13.00       |
+
 
 
 
