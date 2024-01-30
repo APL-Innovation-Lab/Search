@@ -1,6 +1,176 @@
 # Search
 
 
+# Search Configuration for library.austintexas.gov
+
+## Overview
+This document provides a detailed overview of the Drupal Search API configuration for the library.austintexas.gov website.
+
+## Drupal Index View Configuration Summary
+
+- **Index Status**: Fully indexed with a total count of items mentioned.
+- **Status**: The index is currently enabled.
+- **Datasources**: Both "Content" and "Taxonomy term" datasources are fully indexed.
+- **Tracker**: Set to the default tracking method.
+- **Server**: Utilizing the Drupal server for indexing.
+- **Server Index Status**: A specific number of items are indexed on the server for this index.
+- **Cron Batch Size**: Configured to index 50 items per cron run.
+
+
+### Content Types Indexed
+- AHC Page
+- News
+- Digital Resource
+- Event
+- Exhibit
+- Keyword Match
+- Page
+- Staff Recommend
+
+### Taxonomies Indexed
+- Recommend Tags
+- Digital Resource Subjects
+- Event Categories
+- Library Location
+
+
+### Fields Indexed
+
+| Label                | Machine Name       | Property Path       | Type     | Boost |
+|----------------------|--------------------|---------------------|----------|-------|
+| Aggregated field     | aggregated_field   | aggregated_field    | Fulltext | 21.00 |
+| Rendered HTML output | rendered_item      | rendered_item       | Fulltext | 21.00 |
+| Audience             | field_sd_audience  | field_sd_audience   | String   |       |
+| Body                 | body               | body                | Fulltext | 1.00  |
+| Body (Top)           | field_body_top     | field_body_top      | Fulltext | 1.00  |
+| Content type         | type               | type                | String   |       |
+| Do not index         | field_do_not_index | field_do_not_index  | Boolean  |       |
+| Language             | langcode           | langcode            | String   |       |
+| Product Names        | field_product_names| field_product_names | String   |       |
+| Published            | status             | status              | Boolean  |       |
+| Recommend Tags       | field_recommend_tags| field_recommend_tags| String   |       |
+| Searchable           | field_searchable   | field_searchable    | Fulltext | 21.00 |
+| Search Terms         | field_search_terms | field_search_terms  | String   |       |
+| Time Start           | field_sr_time_start| field_sr_time_start | Date     |       |
+| Title                | title              | title               | Fulltext | 21.00 |
+| URL for Match        | field_url_for_match| field_url_for_match | Fulltext | 21.00 |
+| Description          | description        | description         | Fulltext | 0.10  |
+| Do not index         | field_do_not_index | field_do_not_index  | Boolean  |       |
+| Language             | langcode           | langcode            | String   |       |
+| Name                 | name               | name                | Fulltext | 21.00 |
+| Vocabulary           | vid                | vid                 | String   |       |
+
+
+### Processor Configurations
+The following processor settings are enabled in the Drupal Search API:
+
+- **Content access**: (not checked).
+- **Entity status**: Checked.
+- **Highlight**: (not checked).
+- **HTML filter**: (not checked).
+- **Ignore case**: Checked.
+- **Ignore characters**: Checked.
+- **Index hierarchy**: (not checked).
+- **Number field-based boosting**: (not checked).
+- **Reverse entity references**: Checked.
+- **Role-based access**: (not checked).
+- **Stemmer**: (not checked).
+- **Stopwords**: (not checked).
+- **Tokenizer**: Checked.
+- **Transliteration**: Checked.
+- **Type-specific Boosting**: Checked.
+
+### Processor Order
+- **Preprocess Index**: Ignore case, Transliteration, Ignore characters, Tokenizer, Type-specific boosting.
+- **Preprocess Query**: Ignore case, Transliteration, Ignore characters, Tokenizer.
+- **Postprocess Query**: (Not shown in the screenshot).
+
+### Processor Settings
+- **Ignore Case**: Enabled on all supported fields.
+- **Transliteration**: Enabled on all supported fields.
+- **Tokenizer**: Enabled, with a minimum word length to index set at 3 characters.
+- **Type-specific Boosting**: Enabled with specific boosts for content bundles like Event, Keyword Match, and others.
+
+
+### Additional Configurations
+## Ignore Case Setting
+
+The "Ignore Case" processor is enabled, applying case-insensitive search across all supported fields. This ensures that the search functionality is not affected by the case of the text entered into the search field. Additionally, this setting is dynamic and will automatically apply to new fields as they are supported by the index.
+
+## Ignore Characters Processor Configuration
+
+The following character properties are currently selected to be ignored:
+- Punctuation, Other Characters
+- Punctuation, Dash Characters
+- Punctuation, Open Characters
+- Punctuation, Close Characters
+- Punctuation, Final quote Characters
+- Punctuation, Initial quote Characters
+- Punctuation, Other Characters
+
+The character properties not currently selected but available for consideration are:
+- Letter, Modifier Characters
+- Letter, Other Characters
+- Mark, Spacing Combining Characters
+- Mark, Enclosing Characters
+- Mark, Nonspacing Characters
+- Number, Decimal Digit Characters
+- Number, Letter Characters
+- Number, Other Characters
+- Separator, Line Characters
+- Separator, Paragraph Characters
+- Other, Control Characters
+- Other, Format Characters
+- Other, Private Use Characters
+- Other, Surrogate Characters
+- Other, Not Assigned (no characters in the file have this property)
+
+## Tokenizer Processor Configuration
+
+- **Ignore Case**: Enabled for all supported fields to ensure case-insensitive search.
+- **Ignored Characters**: Custom characters to be ignored are not specified (defaults are used).
+- **Whitespace Characters**: Default whitespace characters are used as word-delimiters.
+- **Simple CJK Handling**: Enabled for overlapping sequences in Chinese, Japanese, and Korean text.
+- **Minimum Word Length to Index**: Set to 3, meaning words with fewer than three characters will not be indexed.
+
+These settings determine how text is tokenized and indexed, affecting the granularity and precision of search results.
+
+## Transliteration Processor Configuration
+
+- **Transliteration**: Enabled for all supported fields. This processor converts characters from various scripts into Latin characters, which can greatly assist in normalizing text for indexing and searching. This automatic feature ensures that all current and future supported fields benefit from this setting.
+
+## Type-specific boosting
+
+### Boost Settings for Content
+- **Default boost for items from this datasource**: 1.00.
+- **AHC Page Bundle**: Using datasource default.
+- **Article Bundle**: Using datasource default.
+- **Digital Resource Bundle**: Boosted with a value of 13.00.
+- **Event Bundle**: Boosted with a value of 21.00.
+- **Exhibit Bundle**: Using datasource default.
+- **Keyword Match Bundle**: Boosted with a value of 21.00.
+- **Basic Page Bundle**: Using datasource default.
+- **Page Bundle**: Using datasource default.
+- **Staff Recommend Bundle**: Using datasource default.
+
+### Boost Settings for Taxonomy Term
+- **Default boost for items from this datasource**: 1.00.
+- **Recommend Tags Bundle**: Using datasource default.
+- **Digital Resource Subjects Bundle**: Boosted with a value of 13.00.
+- **Event Categories Bundle**: Boosted with a value of 21.00.
+- **Library Location Bundle**: Boosted with a value of 13.00.
+
+
+
+### Upcoming Faceted Navigation
+Plans are in place to introduce faceted navigation to enhance search capabilities. This will involve adding specific facets based on the content types and taxonomies indexed.
+
+### Notes
+- The detailed configuration information is based on the analysis of the provided HTML files.
+- Manual review of the full content of these files is recommended for complete understanding.
+
+
+
 # Drupal Search Facets Setup Guide
 
 This guide provides step-by-step instructions on how to add facets to your Drupal search, specifically focusing on facets by content type displayed as horizontal tabs above the search results.
